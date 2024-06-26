@@ -1,0 +1,54 @@
+.grid{
+    display:grid;
+    justify-content:center ;
+    grid-template-columns:repeat(3, 3fr);
+    gap: 10px;
+}
+
+.flex{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.dropdownDiv{
+    display: flex;
+    gap: 10px;
+}
+
+.dropdowns{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.inputsTop{
+    width: 200px;
+   
+}
+
+.tag{
+
+    padding: 7px 15px 7px 15px;
+    border-radius: 12px;
+    color: white;
+
+}
+
+.sale{
+    background-color: green;
+}
+
+.rent{
+    background-color: red;
+}
+
+
+.modalButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 12px;
+}

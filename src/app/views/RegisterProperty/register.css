@@ -1,0 +1,32 @@
+input , select{
+    border-radius: 5px;
+    border: 1px solid #c3c3c3;
+    padding: 10px;
+    margin: 5px;
+}
+select{
+    width: 200px!important;
+}
+input:focus{
+    border:1px solid aqua;
+}
+
+.flex{
+    display: flex;
+}
+
+.row{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.checkboxGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .extraFeatures {
+    display: flex;
+    align-items: center;
+  }
