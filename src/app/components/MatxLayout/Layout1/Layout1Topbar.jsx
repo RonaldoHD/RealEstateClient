@@ -35,6 +35,18 @@ import {
   PowerSettingsNew
 } from "@mui/icons-material";
 
+
+
+const userInfo = JSON.parse(sessionStorage.getItem("username_real"));
+const username = sessionStorage.getItem('username_real')
+
+if(!username){
+  window.location.href = '/session/signin'
+}
+
+
+
+
 // STYLED COMPONENTS
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.primary
@@ -110,12 +122,6 @@ const Layout1Topbar = () => {
   };
 
 
-  const userInfo = JSON.parse(sessionStorage.getItem("username_real"));
-  const username = sessionStorage.getItem('username_real')
-
-  if(!username){
-    window.location.href = '/session/signin'
-  }
 
   return (
     <TopbarRoot>
@@ -139,11 +145,12 @@ const Layout1Topbar = () => {
             menuButton={
               <UserMenu>
                 <Hidden xsDown>
-                  <Span>
-                    Hi <strong>{userInfo.FirstName}</strong>
-                  </Span>
+                  {/* <Span>
+                    Hi
+                    <strong>{userInfo.FirstName}</strong> 
+                  </Span> */}
                 </Hidden>
-                <Avatar src={`${endpoint}/userimages/${userInfo.ProfilePicture}`} sx={{ cursor: "pointer" }} />
+                {/* <Avatar src={`${endpoint}/userimages/${userInfo.ProfilePicture}`} sx={{ cursor: "pointer" }} /> */}
                 </UserMenu>
             }>
             <StyledItem>

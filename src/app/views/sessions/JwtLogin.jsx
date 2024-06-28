@@ -5,7 +5,7 @@ import { LoadingButton } from "@mui/lab";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {logged} from "../GlobalFunctions";
-
+import { endpoint } from "../GlobalFunctions";
 import useAuth from "app/hooks/useAuth";
 import { Paragraph } from "app/components/Typography";
 
@@ -78,7 +78,7 @@ export default function JwtLogin() {
     setError(false)
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch(`${endpoint}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

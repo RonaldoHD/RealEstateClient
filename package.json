@@ -1,6 +1,7 @@
 {
   "name": "matx-react",
   "version": "4.0.0",
+  "homepage": "http://softstate.online",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -62,5 +63,9 @@
     "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "gh-pages": "^6.1.1"
-  }
+  },
+  "description": "<h1><a href=\"https://ui-lib.com/downloads/matx-react-dashboard/\">Matx React Material Design Admin Dashboard Template</a></h1>",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
