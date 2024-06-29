@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { endpoint } from '../GlobalFunctions';
 import {
   Box,
   Icon,
@@ -27,7 +28,7 @@ export default function ClientsTable() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/getclients')
+    axios.get(`${endpoint}/api/getclients`)
       .then(response => {
         setClients(response.data);
       })

@@ -79,15 +79,19 @@ const Heading = styled("span")(({ theme }) => ({
   color: theme.palette.text.secondary
 }));
 
+
+
+
 export default function NotificationBar({ container }) {
   const { settings } = useSettings();
   const [panelOpen, setPanelOpen] = useState(false);
-  const { deleteNotification, clearNotifications, notifications } = useNotification();
+  const { deleteNotification, clearNotifications, getNotifications , notifications } = useNotification();
 
   const handleDrawerToggle = () => setPanelOpen(!panelOpen);
 
   return (
     <Fragment>
+
       <IconButton onClick={handleDrawerToggle}>
         <Badge color="secondary" badgeContent={notifications?.length}>
           <Notifications sx={{ color: "text.primary" }} />

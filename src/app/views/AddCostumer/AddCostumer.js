@@ -36,6 +36,12 @@ const StyledButton = styled(Button)(({ theme }) => ({
 export default function Register(){
 
 
+  const handleSubmit = async (event)=>{
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    console.log(formData)
+  }
+
 
 
   return(
@@ -43,21 +49,18 @@ export default function Register(){
        <SimpleCard>
         <div style={{display:'flex', justifyContent:'space-between' , alignContent:'center' }} >
         <h1>Add Costumer</h1> 
-        <StyledButton variant="contained" color="secondary" style={{display:'flex' , gap:"10px" , height:'45px' , padding:'12px'}}>
-          <Icon>add_circle_outline</Icon>
-          Add Costumer
-        </StyledButton>
+
         </div>
          
 
-          <form>  
+          <form onSubmit={handleSubmit}>  
 
             <div className="formdiv" >
             <label>Name</label>
-              <Input placeholder="name" />
+              <Input name="name" placeholder="name" />
 
               <label>Cell</label>
-              <Input placeholder="cell" />
+              <Input name="cell" placeholder="cell" />
 
               <label>Phone</label>
               <Input placeholder="phone" />
@@ -86,6 +89,11 @@ export default function Register(){
 
                </div>
               
+               <StyledButton variant="contained" color="secondary" type="submit"
+                style={{display:'flex' , gap:"10px" , height:'45px' , padding:'12px' , float:'right'}}>
+                  <Icon>add_circle_outline</Icon>
+                  Add Costumer
+                </StyledButton>
       
           </form>
 

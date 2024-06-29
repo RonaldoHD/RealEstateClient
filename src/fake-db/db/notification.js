@@ -1,17 +1,19 @@
 import Mock from "../mock";
 import shortId from "shortid";
 
+
+
 export const NotificationDB = {
   list: [
-    {
-      id: shortId.generate(),
-      heading: "Message",
-      icon: { name: "chat", color: "primary" },
-      timestamp: 1570702802573,
-      title: "New message from Devid",
-      subtitle: "Hello, Any progress...",
-      path: "chat"
-    }
+    // {
+    //   id: shortId.generate(),
+    //   heading: "Message",
+    //   icon: { name: "chat", color: "primary" },
+    //   timestamp: 1570702802573,
+    //   title: "New message from Devid",
+    //   subtitle: "Hello, Any progress...",
+    //   path: "chat"
+    // }
   ]
 };
 

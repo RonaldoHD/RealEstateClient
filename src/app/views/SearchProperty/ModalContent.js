@@ -20,6 +20,7 @@ export default function ModalContent({ thisproperty }){
   const property = thisproperty.data.data;
   const images = thisproperty.data.Images;
   
+  console.log(images)
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
@@ -38,10 +39,11 @@ export default function ModalContent({ thisproperty }){
             <Carousel arrows infinite={false} afterChange={onChange}>
             {images != -1 ? (
               images.map((item, index) => (
+                
                 <div className='carouselDiv' key={index}>
                   <img
                     className='carouselImage'
-                    src={`${endpoint}/propertyimages/property_${property.id}/${item}`}
+                    src={`${endpoint}/propertyImages/property_${property.id}/${item}`}
                     alt={`Property Image ${index + 1}`}
                   />
                 </div>
@@ -59,7 +61,7 @@ export default function ModalContent({ thisproperty }){
                   <div className="row">
                     <div className="col-sm-12">
                       <div className="title-box-d section-t4">
-                        <h3 className="title-d">Quick Summary</h3>
+                        <h3 className="title-d">Details</h3>
                       </div>
                     </div>
                   </div>
@@ -81,6 +83,15 @@ export default function ModalContent({ thisproperty }){
                         <strong>Status:</strong>
                         <span>{property.sale_rent}</span>
                       </li>
+
+                      <li className="d-flex justify-content-between">
+                        <strong>Maps Link:</strong>
+                        <a href={`https://www.google.com/maps/place/${property.gmap}`} 
+                        target="_blank" rel="noopener noreferrer">
+                        Link to Google Maps
+                      </a>                      
+                      </li>
+
                       <li className="d-flex justify-content-between">
                         <strong>Area:</strong>
                         <span>{property.area}m<sup>2</sup></span>
@@ -95,7 +106,7 @@ export default function ModalContent({ thisproperty }){
                       </li>
                       <li className="d-flex justify-content-between">
                         <strong>Garage:</strong>
-                        <span>{property.garage}</span>
+                        <span>{property.garage}</span> 
                       </li>
                     </ul>
                   </div>

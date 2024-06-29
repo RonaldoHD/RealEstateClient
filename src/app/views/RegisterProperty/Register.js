@@ -1,10 +1,12 @@
-import {React, useState , useEffect } from "react";
+import {React, useState , useEffect , useContext } from "react";
 import { Button, Stack, Checkbox , Snackbar ,Alert} from "@mui/material";
 import { Box, styled , Icon, IconButton } from "@mui/material";
 import { Radio , Select } from 'antd';
+import { Clear, Notifications } from "@mui/icons-material";
 import { NotificationDB } from "fake-db/db/notification";
-import NotificationContext from "app/contexts/NotificationContext";
 import useNotification from "app/hooks/useNotification";
+
+import NotificationBar from 'app/components/NotificationBar/NotificationBar'
 import { Breadcrumb, SimpleCard } from "app/components";
 import SimpleForm from "./SimpleForm";
 import "./register.css"
@@ -29,7 +31,6 @@ const Container = styled("div")(({ theme }) => ({
 }));
 
 
-
 export default function Register(){
 
   const [selectedValue, setSelectedValue] = useState("");
@@ -51,7 +52,9 @@ export default function Register(){
      event.preventDefault();
      const formData = new FormData(event.target);
       uploadedImages.forEach((image) => {
+      
       formData.append('images', image);
+      console.log(image)
     });
 
     console.log(Object.fromEntries(formData.entries())); // To check form values
@@ -112,29 +115,35 @@ export default function Register(){
       setsale_rent(e.target.value)
     };
 
-    const { getNotifications } = useNotification();
+    // const { getNotifications , notifications } = useNotification();
 
-    const handleAddNotification = () => {
-      // Define your notification object
-      const newNotification ={
-        id: "sdsd",
-        heading: "ER fik",
-        icon: { name: "chat", color: "primary" },
-        timestamp: 1570702802573,
-        title: "Msoos Devid",
-        subtitle: "Hello, Any progress...",
-        path: "chat"
-      }
+    // const handleAddNotification = () => {
+    //   const newNotification = {
+    //     id: "sdsd",
+    //     heading: "ER lllll",
+    //     icon: { name: "chat", color: "primary" },
+    //     timestamp: 1570702802573,
+    //     title: "Msoos Devid",
+    //     subtitle: "Hello, Any progress...",
+    //     path: "chat"
+    //   };
+
+    //  // localStorage.setItem('notifications' , JSON.stringify(newNotification))
   
-      console.log("Adding new notification:", newNotification); // Log the new notification object
-      console.log(NotificationDB.list)
-      const notif = NotificationDB.list
-      notif.push(newNotification);
-      getNotifications();
-    };
+    //   console.log("Adding new notification:");
   
+    //   // Add the new notification to your local database
+    //   NotificationDB.list.push(newNotification);
+ 
+
+    //   const res = axios.get("/api/notification");
+    //   console.log(res)
+      
+    // };
+  
+
     useEffect(() => {
-      console.log("Register component mounted"); // Log when the Register component is mounted
+       console.log("Register component mounted"); // Log when the Register component is mounted
     }, []);
 
 
@@ -142,7 +151,7 @@ export default function Register(){
   return(
     <Container>
       
-      <button onClick={handleAddNotification}>Add Notification</button>
+      {/* <button onClick={handleAddNotification}>Add Notification</button> */}
 
       <Stack spacing={3}>
         <SimpleCard >
@@ -151,7 +160,7 @@ export default function Register(){
           </div>
         <br></br>
 
-        <form onSubmit={handleSubmit} noValidate  style={{display:'flex' , flexDirection:"column" , gap:'20px'}}>
+        <form onSubmit={handleSubmit}   style={{display:'flex' , flexDirection:"column" , gap:'20px'}}>
 
         <div style={{display:'flex'  , gap:'15px'}} >
           <div>
@@ -431,7 +440,7 @@ export default function Register(){
          </div>
 
          <label><Icon>add_a_photo</Icon><br></br></label>
-         <input className="input" id="icon-button-file" type="file" multiple required 
+         <input className="input" id="icon-button-file" type="file" multiple  
          onChange={handleImageChange}/> 
 
          <Button color="primary" variant="contained" type="submit">Add property</Button> 

@@ -23,7 +23,7 @@ import { NotificationBar } from "app/components/NotificationBar";
 import { themeShadows } from "app/components/MatxTheme/themeColors";
 
 import { topBarHeight } from "app/utils/constant";
-import { Name, endpoint } from '../../../views/GlobalFunctions.js'
+import { Name, endpoint , checkRequests } from '../../../views/GlobalFunctions.js'
 import {
   Home,
   Menu,
@@ -34,7 +34,9 @@ import {
   StarOutline,
   PowerSettingsNew
 } from "@mui/icons-material";
+import { useEffect } from "react";
 
+await checkRequests()
 
 
 const userInfo = JSON.parse(sessionStorage.getItem("username_real"));

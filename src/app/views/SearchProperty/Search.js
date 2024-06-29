@@ -36,7 +36,6 @@ export default function Search(){
     axios.get(`${endpoint}/api/getsingleproperty/${id}`)
         .then(response => {
          setSingleProperty(response);
-         
          setIsModalOpen(true);
     })
     .catch(error => {
@@ -56,22 +55,24 @@ export default function Search(){
     setEditing(false)
   };
 
-  const handleConfirm = () => {
-    axios.post(`${endpoint}/api/addclientrequest`, ConfirmformValues, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      console.log("Added to client request:", response.data);
-    })
-    .catch(error => {
-      console.error('There was an error adding the client request!', error);
-    });
-  alert('client added succesfully')
-    setIsConfirmModalOpen(false);
+  const handleConfirm =async() => {
+      await axios.post(`${endpoint}/api/addclientrequest`, ConfirmformValues, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        alert('client added succesfully')
+        console.log("Added to client request:", response.data);
+      })
+      .catch(error => {
+        console.error('There was an error adding the client request!', error);
+      });
+
+      setIsConfirmModalOpen(false);
   };
   
+
   const handleCancelConfirm = () => {
     setIsConfirmModalOpen(false);
   
@@ -103,10 +104,9 @@ export default function Search(){
     setsale_rent(e.target.value)
   };
 
-  const oepnConfirm = () => {
-  
-    setIsConfirmModalOpen(true)
-  };
+  // const oepnConfirm = () => {
+  //   setIsConfirmModalOpen(true)
+  // };
   
   useEffect(() => {
     axios.get(`${endpoint}/api/getallproperties`)
@@ -123,7 +123,7 @@ export default function Search(){
 
 
   const handleSubmit = async(event) => {
-    oepnConfirm()
+    setIsConfirmModalOpen(true)
     event.preventDefault();
     const formData = new FormData(event.target);
     const formValues = Object.fromEntries(formData.entries());
@@ -169,10 +169,9 @@ export default function Search(){
       </Modal>
 
 
-      <Modal title="Basic Modal" open={isConfirmModalOpen} onOk={handleConfirm} onCancel={handleCancelConfirm}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title="Client Request" open={isConfirmModalOpen} onOk={handleConfirm} onCancel={handleCancelConfirm}>
+        <p>Would you like to add this as a cLient Request ?</p>
+
       </Modal>
 
 

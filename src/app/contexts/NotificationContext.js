@@ -60,10 +60,11 @@ export const NotificationProvider = ({ children }) => {
   };
 
   const createNotification = async (notification) => {
-    console.log("dddddddddddddd")
+   
     try {
       const res = await axios.post("/api/notification/add", { notification });
       dispatch({ type: "CREATE_NOTIFICATION", payload: res.data });
+      console.log("dddddddddddddd")
     } catch (e) {
       console.error(e);
     }
@@ -71,6 +72,7 @@ export const NotificationProvider = ({ children }) => {
 
   useEffect(() => {
     getNotifications();
+   
   }, []);
 
   return (
